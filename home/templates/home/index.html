@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Home Page
+    Home Page
 {% endblock %}
 
 {% block content %}
-	<h1>Test Text</h1>
+    <div class="container mt-4">
+        <h1 class="text-center">Blog Posts</h1>
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>{{ post.content }}</p>
+                            <p class="text-muted"><small>Posted on: {{ post.created }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No posts available.</p>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
